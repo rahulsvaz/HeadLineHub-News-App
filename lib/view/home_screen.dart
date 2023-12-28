@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               future: newsApi.fetchNewsFromApi(),
               builder: (BuildContext context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const  Center(
+                  return const Center(
                     child: SpinKitFadingCircle(
                       color: Colors.grey,
                     ),
@@ -59,17 +59,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       return Stack(alignment: Alignment.center, children: [
                         Container(
-                          height: height*0.6,
-                          width: width*.9,
-                          padding: EdgeInsets.symmetric(horizontal:height*0.02  ),
-
+                          height: height * 0.6,
+                          width: width * .9,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: height * 0.02),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
                             child: CachedNetworkImage(
-                              imageUrl: snapshot.data!.articles![index].urlToImage
+                              imageUrl: snapshot
+                                  .data!.articles![index].urlToImage
                                   .toString(),
                               fit: BoxFit.cover,
-                              errorWidget: (context, url, error) => const SpinKitPulse(
+                              errorWidget: (context, url, error) =>
+                                  const SpinKitPulse(
                                 color: Colors.grey,
                               ),
                               placeholder: (context, url) => const SpinKitPulse(
@@ -78,6 +80,38 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
+                        Positioned(
+                          bottom: 20,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Container(
+                              height: height*.22,
+                              alignment: Alignment.bottomCenter,
+
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: width * 0.7,
+                                    child: Text(
+                                      snapshot.data!.articles![index].title
+                                          .toString(),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
                       ]);
                     });
               },
