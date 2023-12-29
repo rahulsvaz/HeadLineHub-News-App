@@ -7,7 +7,6 @@ import 'package:head_line_hub/view/detailedView.dart';
 import 'package:head_line_hub/viewModel/news_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -108,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 alignment: Alignment.bottomCenter,
                                 padding: const EdgeInsets.all(15),
                                 child: Column(
+
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
