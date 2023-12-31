@@ -4,6 +4,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:head_line_hub/model/news_channel_headlines_model.dart';
 import 'package:head_line_hub/view/detailedView.dart';
+import 'package:head_line_hub/view/githubPage.dart';
+import 'package:head_line_hub/view/splash_screen.dart';
 import 'package:head_line_hub/viewModel/news_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -57,25 +59,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
                 return ListView.builder(
-
                   scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!.articles!.length,
                   itemBuilder: (context, index) {
-                    final news =  snapshot.data!.articles![index];
+                    final news = snapshot.data!.articles![index];
                     DateTime date = DateTime.parse(
                         snapshot.data!.articles![index].publishedAt.toString());
                     return GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailedNews(newsDetails: news.content.toString(),tittle: news.title.toString(), imageUrl: snapshot
-                            .data!.articles![index].urlToImage
-                            .toString(),),),);
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailedNews(
+                              newsDetails: news.content.toString(),
+                              tittle: news.title.toString(),
+                              imageUrl: snapshot
+                                  .data!.articles![index].urlToImage
+                                  .toString(),
+                            ),
+                          ),
+                        );
                       },
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
                           Container(
                             height: height * 0.9,
-                            width: width ,
+                            width: width,
                             padding:
                                 EdgeInsets.symmetric(horizontal: height * 0.02),
                             child: ClipRRect(
@@ -89,7 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const SpinKitPulse(
                                   color: Colors.grey,
                                 ),
-                                placeholder: (context, url) => const SpinKitPulse(
+                                placeholder: (context, url) =>
+                                    const SpinKitPulse(
                                   color: Colors.grey,
                                 ),
                               ),
@@ -107,7 +118,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 alignment: Alignment.bottomCenter,
                                 padding: const EdgeInsets.all(15),
                                 child: Column(
-
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -160,13 +170,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     );
@@ -174,7 +182,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-          )
+          ),
+          SizedBox(
+            height: height * 0.07,
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context, FadePageRoute(builder: (context)=> const GitHubPage(), nextpage: const GitHubPage()),);
+            },
+            child: const Text('Developed By : RAHUL'),
+          ),
         ],
       ),
     );

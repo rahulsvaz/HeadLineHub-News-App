@@ -12,6 +12,7 @@ class NewsRepository {
   Future<NewsChannelHeadLinesModel> fetchNewsApi() async {
     final response = await http.get(Uri.parse(url2));
     var body = jsonDecode(response.body);
+
     if (response.statusCode == 200) {
       return NewsChannelHeadLinesModel.fromJson(body);
     }

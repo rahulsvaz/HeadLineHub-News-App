@@ -45,6 +45,7 @@ class _DetailedNewsState extends State<DetailedNews> {
               style:
                   GoogleFonts.abel(fontSize: 24, fontWeight: FontWeight.bold),),
           SizedBox(height: 500,
+            width:width,
             child: SingleChildScrollView(
               child: Text(
                 widget.newsDetails,
