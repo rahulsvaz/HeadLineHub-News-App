@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       return Navigator.pushReplacement(
         context,
         FadePageRoute(
-          builder: (context) => const HomeScreen(), nextpage: const HomeScreen(),
+          builder: (context) => const HomeScreen(), nextPage: const HomeScreen(),
         ),
       );
     });
@@ -59,9 +59,9 @@ class _SplashScreenState extends State<SplashScreen> {
 // transition animation
 class FadePageRoute extends PageRouteBuilder {
   final WidgetBuilder builder ;
-  final Widget nextpage;
+  final Widget nextPage;
 
-  FadePageRoute({required this.builder,required this.nextpage})
+  FadePageRoute({required this.builder,required this.nextPage})
       : super(
           pageBuilder: (context, animation, secondaryAnimation) =>
               builder(context),
@@ -76,7 +76,7 @@ class FadePageRoute extends PageRouteBuilder {
             var opacityAnimation = animation.drive(tween);
             return FadeTransition(
               opacity: opacityAnimation,
-              child: nextpage,
+              child: nextPage,
             );
           },
         );

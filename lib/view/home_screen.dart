@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(context, FadePageRoute(builder: (context)=> const GitHubPage(), nextpage: const GitHubPage()),);
+              Navigator.push(context, FadePageRoute(builder: (context)=> const GitHubPage(), nextPage: const GitHubPage()),);
             },
             child: const Text('Developed By : RAHUL'),
           ),
