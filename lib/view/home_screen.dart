@@ -9,6 +9,7 @@ import 'package:head_line_hub/view/splash_screen.dart';
 import 'package:head_line_hub/viewModel/news_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,10 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
             height: height * 0.028,
           ),
         ),
-        title: Text(
-          'Head Lines Hub',
-          style: GoogleFonts.abel(
-              textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Shimmer.fromColors(
+          baseColor: Colors.black,
+          highlightColor: Colors.grey,
+          direction: ShimmerDirection.ltr,
+          child: Text(
+            'Head Lines Hub',
+            style: GoogleFonts.abel(
+                textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+          ),
         ),
         centerTitle: true,
       ),
