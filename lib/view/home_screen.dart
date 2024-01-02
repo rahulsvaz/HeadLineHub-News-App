@@ -71,6 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => DetailedNews(
+                              source:  snapshot.data!.articles![index]
+                                  .source!.name
+                                  .toString(),
                               newsDetails: news.content.toString(),
                               tittle: news.title.toString(),
                               imageUrl: snapshot
