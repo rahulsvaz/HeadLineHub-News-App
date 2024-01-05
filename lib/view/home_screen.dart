@@ -37,15 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
             height: height * 0.028,
           ),
         ),
-        title: Shimmer.fromColors(
-          baseColor: Colors.black,
-          highlightColor: Colors.grey,
-          direction: ShimmerDirection.ltr,
-          child: Text(
-            'Head Lines Hub',
-            style: GoogleFonts.abel(
-                textStyle: const TextStyle(fontWeight: FontWeight.bold)),
-          ),
+        title: Text(
+          'Head Lines Hub',
+          style: GoogleFonts.abel(
+              textStyle: const TextStyle(fontWeight: FontWeight.bold)),
         ),
         centerTitle: true,
       ),
@@ -75,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
+                          FadePageRoute(
                             builder: (context) => DetailedNews(
                               source:  snapshot.data!.articles![index]
                                   .source!.name
@@ -86,6 +81,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   .data!.articles![index].urlToImage
                                   .toString(),
                             ),
+                            nextPage: DetailedNews(
+                            source:  snapshot.data!.articles![index]
+                                .source!.name
+                                .toString(),
+                            newsDetails: news.content.toString(),
+                            tittle: news.title.toString(),
+                            imageUrl: snapshot
+                                .data!.articles![index].urlToImage
+                                .toString(),
+                          ),
                           ),
                         );
                       },

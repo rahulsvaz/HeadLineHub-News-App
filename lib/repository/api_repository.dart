@@ -19,3 +19,6 @@ class NewsRepository {
     return body;
   }
 }
+
+
+
